@@ -1,12 +1,13 @@
 package com.fgardila.myplayer_kotlinantonioleiva
 
-open class Person(name: String, age: Int)
+import android.util.Log
 
-class Developer(name: String): Person(name, 20) {
+interface Logger {
 
-}
+    val tag: String
+        get() = javaClass.simpleName
 
-fun test() {
-    val p = Person("John", 20)
-    val d = Developer("Tom")
+    fun logD(message: String) = Log.d(tag, message)
+
+    fun logE(message: String) = Log.e(tag, message)
 }
