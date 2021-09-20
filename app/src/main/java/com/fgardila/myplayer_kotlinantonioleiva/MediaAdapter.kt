@@ -7,11 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.fgardila.myplayer_kotlinantonioleiva.databinding.ViewMediaItemBinding
 
 class MediaAdapter(private val items: List<MediaItem>): RecyclerView.Adapter<MediaAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_media_item, parent, false)
+        //val view = LayoutInflater.from(parent.context).inflate(R.layout.view_media_item, parent, false)
+        val view = parent.inflate(R.layout.view_media_item)
         return ViewHolder(view)
     }
 
@@ -24,12 +26,20 @@ class MediaAdapter(private val items: List<MediaItem>): RecyclerView.Adapter<Med
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        private val title: TextView = view.findViewById(R.id.mediaTitle)
-        private val thumb: ImageView = view.findViewById(R.id.mediaThumb)
+        private val binding = ViewMediaItemBinding.bind(view)
 
         fun bind(mediaItem: MediaItem) {
-            title.text = mediaItem.title
-            Glide.with(thumb).load(mediaItem.url).into(thumb)
+            binding.mediaTitle.text = mediaItem.title
+            binding.mediaThumb.loadUrl(mediaItem.url)
+
+            binding.mediaVideoIndicator.visibility = when (mediaItem.type) {
+                MediaItem.Type.PHOTO -> View.GONE
+                MediaItem.Type.VIDEO -> View.VISIBLE
+            }
+
+            itemView.setOnClickListener {
+                toast("Prueba")
+            }
         }
     }
 }

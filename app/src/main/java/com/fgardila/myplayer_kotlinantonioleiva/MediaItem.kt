@@ -1,6 +1,13 @@
 package com.fgardila.myplayer_kotlinantonioleiva
 
-class MediaItem(
+data class MediaItem(
     val title: String,
-    val url: String
-)
+    val url: String,
+    val type: Type
+) {
+    enum class Type {
+        PHOTO,
+        VIDEO,
+    }
+}
+
