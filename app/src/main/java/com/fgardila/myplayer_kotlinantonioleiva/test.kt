@@ -1,5 +1,6 @@
 package com.fgardila.myplayer_kotlinantonioleiva
 
+import android.content.Context
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -22,3 +23,25 @@ fun test(view: View) {
         else -> print("Nothing found")
     }
 }
+
+fun test(context: Context) {
+    val textView = TextView(context).apply {
+        text = "Hello"
+        hint = "Goodby"
+        textSize = 25f
+    }
+}
+
+fun testLamda() {
+
+    val mul = { x: Int, y: Int -> x * y }
+    val res = doOp(2, 3) { x, y ->
+        x - y
+    }
+
+    val resSum = doOp(2, 4, ::sum)
+}
+
+fun sum(x: Int, y: Int): Int = x + y
+
+fun doOp(x: Int, y: Int, op: (Int, Int) -> Int) = op(x, y)

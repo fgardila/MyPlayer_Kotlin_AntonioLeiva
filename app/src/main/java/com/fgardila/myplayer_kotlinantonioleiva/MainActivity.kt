@@ -9,8 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.fgardila.myplayer_kotlinantonioleiva.databinding.ActivityMainBinding
 
-class MainActivity() : AppCompatActivity(), Logger {
-
+A
     private lateinit var mBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +19,7 @@ class MainActivity() : AppCompatActivity(), Logger {
 
         setContentView(mBinding.root)
 
-        mBinding.recyclerView.adapter = MediaAdapter(getItems())
+        //mBinding.recyclerView.adapter = MediaAdapter(getItems(), )
 
         logD("I'm here")
 
